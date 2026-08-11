@@ -81,31 +81,37 @@ function WhyChooseUs() {
   return (
     <section
       id="why-us"
-      className="bg-[#090909] px-6 py-24 md:py-32"
+      className="overflow-hidden bg-[#090909] px-4 py-20 sm:px-6 sm:py-24 md:py-32"
     >
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto w-full max-w-7xl">
 
-        {/* Header */}
+        {/* =====================================================
+            HEADER
+        ====================================================== */}
+
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="flex items-center gap-2 text-xs font-black tracking-[0.3em] text-[#b7ff3c]">
+          <p className="flex items-center gap-2 text-[10px] font-black tracking-[0.25em] text-[#b7ff3c] sm:text-xs sm:tracking-[0.3em]">
             <TrendingUp size={14} />
             BUSINESS GROWTH
           </p>
 
-          <div className="mt-4 grid gap-6 lg:grid-cols-[1fr_0.6fr] lg:items-end">
+          <div className="mt-4 grid gap-5 lg:grid-cols-[1fr_0.6fr] lg:items-end lg:gap-6">
 
-            <h2 className="max-w-5xl text-4xl font-black tracking-tight sm:text-5xl md:text-6xl">
+            <h2 className="max-w-5xl text-[2.5rem] font-black leading-[0.95] tracking-tight sm:text-5xl md:text-6xl">
               BUILT FOR
               <br />
+
               <span className="text-[#b7ff3c]">
                 MODERN FITNESS
               </span>
+
               <br />
+
               BUSINESSES.
             </h2>
 
@@ -118,8 +124,11 @@ function WhyChooseUs() {
           </div>
         </motion.div>
 
-        {/* Main solution cards */}
-        <div className="mt-14 grid gap-4 lg:grid-cols-2">
+        {/* =====================================================
+            MAIN SOLUTION CARDS
+        ====================================================== */}
+
+        <div className="mt-10 grid gap-4 sm:mt-12 lg:mt-14 lg:grid-cols-2">
 
           {solutions.map((solution, index) => {
             const Icon = solution.icon;
@@ -145,60 +154,64 @@ function WhyChooseUs() {
                 whileHover={{
                   y: -5,
                 }}
-                className={`group rounded-[1.75rem] border border-white/10 bg-white/[0.025] p-6 md:p-7 ${
+                className={`group rounded-[1.5rem] border border-white/10 bg-white/[0.025] p-5 sm:rounded-[1.75rem] sm:p-6 md:p-7 ${
                   index === 0 ? "lg:col-span-2" : ""
                 }`}
               >
 
-                <div className="flex flex-col gap-6 sm:flex-row">
+                <div className="flex flex-col gap-5 sm:flex-row sm:gap-6">
 
                   {/* Icon */}
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#b7ff3c]/10">
+
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#b7ff3c]/10 sm:h-12 sm:w-12 sm:rounded-2xl">
                     <Icon
-                      size={22}
+                      size={21}
                       className="text-[#b7ff3c]"
                     />
                   </div>
 
                   {/* Content */}
-                  <div className="flex-1">
 
-                    <div className="flex items-start justify-between gap-4">
+                  <div className="min-w-0 flex-1">
 
-                      <div>
-                        <p className="text-[10px] font-black tracking-[0.25em] text-white/20">
+                    <div className="flex items-start justify-between gap-3">
+
+                      <div className="min-w-0">
+
+                        <p className="text-[9px] font-black tracking-[0.25em] text-white/20">
                           0{index + 1}
                         </p>
 
-                        <h3 className="mt-2 text-2xl font-black">
+                        <h3 className="mt-1.5 text-xl font-black leading-tight sm:text-2xl">
                           {solution.title}
                         </h3>
+
                       </div>
 
                       <ArrowUpRight
-                        size={20}
-                        className="text-white/20 transition group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[#b7ff3c]"
+                        size={19}
+                        className="mt-1 shrink-0 text-white/20 transition group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[#b7ff3c]"
                       />
 
                     </div>
 
-                    <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/45">
+                    <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/45 sm:mt-4">
                       {solution.description}
                     </p>
 
-                    <div className="mt-6 flex flex-wrap gap-3">
+                    <div className="mt-5 flex flex-wrap gap-2 sm:mt-6 sm:gap-3">
 
                       {solution.points.map((point) => (
                         <div
                           key={point}
-                          className="flex items-center gap-2 rounded-full border border-white/10 bg-black/20 px-4 py-2 text-xs text-white/50"
+                          className="flex items-center gap-2 rounded-full border border-white/10 bg-black/20 px-3 py-2 text-[11px] text-white/50 sm:px-4 sm:text-xs"
                         >
                           <CheckCircle2
                             size={13}
-                            className="text-[#b7ff3c]"
+                            className="shrink-0 text-[#b7ff3c]"
                           />
 
-                          {point}
+                          <span>{point}</span>
                         </div>
                       ))}
 
@@ -214,7 +227,10 @@ function WhyChooseUs() {
 
         </div>
 
-        {/* Digital transformation panel */}
+        {/* =====================================================
+            DIGITAL TRANSFORMATION PANEL
+        ====================================================== */}
+
         <motion.div
           initial={{
             opacity: 0,
@@ -230,38 +246,44 @@ function WhyChooseUs() {
           transition={{
             duration: 0.7,
           }}
-          className="mt-8 overflow-hidden rounded-[2rem] border border-white/10 bg-[#111]"
+          className="mt-6 overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#111] sm:mt-8 sm:rounded-[2rem]"
         >
 
-          <div className="grid lg:grid-cols-[1fr_1fr]">
+          <div className="grid lg:grid-cols-2">
 
-            {/* Left */}
-            <div className="p-7 md:p-10">
+            {/* =================================================
+                LEFT
+            ================================================== */}
 
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#b7ff3c] text-black">
-                <Smartphone size={22} />
+            <div className="p-6 sm:p-7 md:p-10">
+
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#b7ff3c] text-black sm:h-12 sm:w-12 sm:rounded-2xl">
+                <Smartphone size={21} />
               </div>
 
-              <h3 className="mt-7 max-w-lg text-3xl font-black sm:text-4xl">
+              <h3 className="mt-6 max-w-lg text-2xl font-black leading-tight sm:mt-7 sm:text-3xl md:text-4xl">
+
                 FROM
+
                 <span className="text-[#b7ff3c]">
-                  {" "}
-                  MANUAL
-                </span>{" "}
-                TO
-                <span className="text-[#b7ff3c]">
-                  {" "}
-                  DIGITAL.
+                  {" "}MANUAL
                 </span>
+
+                {" "}TO
+
+                <span className="text-[#b7ff3c]">
+                  {" "}DIGITAL.
+                </span>
+
               </h3>
 
-              <p className="mt-5 max-w-xl text-sm leading-relaxed text-white/45">
+              <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/45 sm:mt-5">
                 Replace scattered spreadsheets, paper records and
                 repetitive follow-ups with one connected digital
                 experience for your gym team and members.
               </p>
 
-              <div className="mt-8 space-y-4">
+              <div className="mt-6 space-y-3 sm:mt-8 sm:space-y-4">
 
                 {[
                   "One place for member information",
@@ -271,14 +293,14 @@ function WhyChooseUs() {
                 ].map((item) => (
                   <div
                     key={item}
-                    className="flex items-center gap-3"
+                    className="flex items-start gap-3"
                   >
                     <CheckCircle2
                       size={17}
-                      className="shrink-0 text-[#b7ff3c]"
+                      className="mt-0.5 shrink-0 text-[#b7ff3c]"
                     />
 
-                    <span className="text-sm text-white/60">
+                    <span className="text-sm leading-relaxed text-white/60">
                       {item}
                     </span>
                   </div>
@@ -288,18 +310,21 @@ function WhyChooseUs() {
 
             </div>
 
-            {/* Right visual */}
-            <div className="relative min-h-[400px] overflow-hidden bg-[#b7ff3c] p-7 text-black md:p-10">
+            {/* =================================================
+                RIGHT VISUAL
+            ================================================== */}
+
+            <div className="relative min-h-[380px] overflow-hidden bg-[#b7ff3c] p-6 text-black sm:min-h-[400px] sm:p-7 md:p-10">
 
               <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-black/10 blur-3xl" />
 
               <div className="relative">
 
-                <p className="text-xs font-black tracking-[0.25em] opacity-50">
+                <p className="text-[10px] font-black tracking-[0.22em] opacity-50 sm:text-xs sm:tracking-[0.25em]">
                   DIGITAL GYM ECOSYSTEM
                 </p>
 
-                <div className="mt-8 space-y-3">
+                <div className="mt-6 space-y-3 sm:mt-8">
 
                   {[
                     ["MEMBERS", "1,248", "Active members"],
@@ -309,20 +334,22 @@ function WhyChooseUs() {
                   ].map(([label, value, subtitle]) => (
                     <div
                       key={label}
-                      className="flex items-center justify-between rounded-2xl bg-black p-4 text-white"
+                      className="flex items-center justify-between gap-3 rounded-xl bg-black p-3.5 text-white sm:rounded-2xl sm:p-4"
                     >
 
-                      <div>
-                        <p className="text-[9px] font-bold tracking-widest text-white/30">
+                      <div className="min-w-0">
+
+                        <p className="text-[8px] font-bold tracking-widest text-white/30 sm:text-[9px]">
                           {label}
                         </p>
 
-                        <p className="mt-1 text-xl font-black">
+                        <p className="mt-1 text-lg font-black sm:text-xl">
                           {value}
                         </p>
+
                       </div>
 
-                      <p className="text-xs text-white/35">
+                      <p className="text-right text-[10px] leading-tight text-white/35 sm:text-xs">
                         {subtitle}
                       </p>
 
@@ -339,8 +366,11 @@ function WhyChooseUs() {
 
         </motion.div>
 
-        {/* Stats */}
-        <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {/* =====================================================
+            STATS
+        ====================================================== */}
+
+        <div className="mt-6 grid grid-cols-2 gap-3 sm:mt-8 lg:grid-cols-4">
 
           {stats.map(([number, title, subtitle], index) => (
             <motion.div
@@ -359,18 +389,18 @@ function WhyChooseUs() {
               transition={{
                 delay: index * 0.08,
               }}
-              className="rounded-2xl border border-white/10 bg-white/[0.02] p-5"
+              className="rounded-xl border border-white/10 bg-white/[0.02] p-4 sm:rounded-2xl sm:p-5"
             >
 
-              <p className="text-xs font-black text-[#b7ff3c]">
+              <p className="text-[10px] font-black text-[#b7ff3c] sm:text-xs">
                 {number}
               </p>
 
-              <p className="mt-4 text-lg font-black">
+              <p className="mt-3 text-base font-black sm:mt-4 sm:text-lg">
                 {title}
               </p>
 
-              <p className="mt-1 text-xs text-white/30">
+              <p className="mt-1 text-[10px] leading-relaxed text-white/30 sm:text-xs">
                 {subtitle}
               </p>
 
@@ -379,27 +409,34 @@ function WhyChooseUs() {
 
         </div>
 
-        {/* Trust strip */}
-        <div className="mt-10 flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/[0.02] p-5 md:flex-row md:items-center md:justify-between">
+        {/* =====================================================
+            TRUST STRIP
+        ====================================================== */}
 
-          <div className="flex items-center gap-3">
+        <div className="mt-7 flex flex-col gap-4 rounded-xl border border-white/10 bg-white/[0.02] p-4 sm:mt-10 sm:rounded-2xl sm:p-5 md:flex-row md:items-center md:justify-between">
+
+          <div className="flex items-start gap-3">
+
             <ShieldCheck
               size={20}
-              className="text-[#b7ff3c]"
+              className="mt-0.5 shrink-0 text-[#b7ff3c]"
             />
 
             <div>
-              <p className="text-sm font-bold">
+
+              <p className="text-sm font-bold leading-tight">
                 Designed for growing fitness businesses
               </p>
 
-              <p className="mt-1 text-xs text-white/30">
+              <p className="mt-1 text-[10px] leading-relaxed text-white/30 sm:text-xs">
                 Website + software + automation + analytics
               </p>
+
             </div>
+
           </div>
 
-          <div className="text-xs font-bold uppercase tracking-[0.2em] text-[#b7ff3c]">
+          <div className="pl-8 text-[10px] font-bold uppercase tracking-[0.15em] text-[#b7ff3c] sm:pl-0 sm:text-xs sm:tracking-[0.2em]">
             Evergrow Technologies
           </div>
 

@@ -10,11 +10,22 @@ import {
   CheckCircle2,
 } from "lucide-react";
 
+// =========================================================
+// WHATSAPP NUMBER
+// =========================================================
+
+const WHATSAPP_NUMBER = "918999805010";
+
+// =========================================================
+// MEMBERSHIP PLANS
+// =========================================================
+
 const plans = [
   {
     name: "STARTER",
     price: "₹999",
-    description: "Perfect for beginners starting their fitness journey.",
+    description:
+      "Perfect for beginners starting their fitness journey.",
     features: [
       "Gym Access",
       "Basic Equipment",
@@ -24,7 +35,8 @@ const plans = [
   {
     name: "PRO",
     price: "₹1,999",
-    description: "Everything you need to train consistently and progress.",
+    description:
+      "Everything you need to train consistently and progress.",
     features: [
       "Full Gym Access",
       "Personalized Workout Plan",
@@ -36,7 +48,8 @@ const plans = [
   {
     name: "ELITE",
     price: "₹3,499",
-    description: "Premium coaching and complete fitness support.",
+    description:
+      "Premium coaching and complete fitness support.",
     features: [
       "Everything in PRO",
       "Personal Training",
@@ -46,6 +59,10 @@ const plans = [
     ],
   },
 ];
+
+// =========================================================
+// MEMBERSHIP COMPONENT
+// =========================================================
 
 function Membership() {
   const [selectedPlan, setSelectedPlan] = useState(null);
@@ -57,6 +74,10 @@ function Membership() {
     email: "",
   });
 
+  // =======================================================
+  // HANDLE INPUT CHANGE
+  // =======================================================
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -65,6 +86,10 @@ function Membership() {
       [name]: value,
     }));
   };
+
+  // =======================================================
+  // OPEN MODAL
+  // =======================================================
 
   const openModal = (plan) => {
     setSelectedPlan(plan);
@@ -79,11 +104,20 @@ function Membership() {
     document.body.style.overflow = "hidden";
   };
 
+  // =======================================================
+  // CLOSE MODAL
+  // =======================================================
+
   const closeModal = () => {
     setSelectedPlan(null);
     setSubmitted(false);
+
     document.body.style.overflow = "auto";
   };
+
+  // =======================================================
+  // FORM SUBMIT
+  // =======================================================
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -99,11 +133,14 @@ function Membership() {
 
       <section
         id="membership"
-        className="px-4 py-20 sm:px-6 sm:py-24"
+        className="px-4 py-16 sm:px-6 sm:py-24 md:py-32"
       >
         <div className="mx-auto max-w-7xl">
 
-          {/* Heading */}
+          {/* =================================================
+              HEADING
+          ================================================== */}
+
           <motion.div
             initial={{
               opacity: 0,
@@ -120,7 +157,7 @@ function Membership() {
             transition={{
               duration: 0.6,
             }}
-            className="mb-12"
+            className="mb-10 sm:mb-12"
           >
             <p className="text-xs font-black tracking-[0.3em] text-[#b7ff3c]">
               MEMBERSHIP
@@ -128,7 +165,9 @@ function Membership() {
 
             <div className="mt-4 flex flex-col justify-between gap-5 md:flex-row md:items-end">
 
-              <h2 className="max-w-3xl text-4xl font-black tracking-tight sm:text-5xl md:text-6xl">
+              {/* Heading */}
+
+              <h2 className="max-w-3xl text-4xl font-black leading-[0.95] tracking-tight sm:text-5xl md:text-6xl">
                 INVEST IN
                 <br />
 
@@ -137,7 +176,9 @@ function Membership() {
                 </span>
               </h2>
 
-              <p className="max-w-md text-sm leading-relaxed text-white/45">
+              {/* Description */}
+
+              <p className="max-w-md text-sm leading-relaxed text-white/45 sm:text-base">
                 Choose the membership that fits your goals,
                 training style and commitment.
               </p>
@@ -145,8 +186,11 @@ function Membership() {
             </div>
           </motion.div>
 
-          {/* Pricing Cards */}
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {/* =================================================
+              PRICING CARDS
+          ================================================== */}
+
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
 
             {plans.map((plan, index) => (
               <motion.article
@@ -170,23 +214,29 @@ function Membership() {
                 whileHover={{
                   y: -8,
                 }}
-                className={`relative overflow-hidden rounded-[2rem] p-7 transition ${
+                className={`relative overflow-hidden rounded-[1.75rem] p-5 transition sm:p-7 ${
                   plan.popular
                     ? "bg-[#b7ff3c] text-black"
                     : "border border-white/10 bg-white/[0.03]"
                 }`}
               >
 
-                {/* Popular Badge */}
+                {/* =================================================
+                    POPULAR BADGE
+                ================================================== */}
+
                 {plan.popular && (
-                  <div className="absolute right-5 top-5 rounded-full bg-black px-3 py-1.5 text-[10px] font-black tracking-wider text-white">
+                  <div className="absolute right-4 top-4 rounded-full bg-black px-3 py-1.5 text-[9px] font-black tracking-wider text-white sm:right-5 sm:top-5 sm:text-[10px]">
                     MOST POPULAR
                   </div>
                 )}
 
-                {/* Plan Name */}
+                {/* =================================================
+                    PLAN NAME
+                ================================================== */}
+
                 <p
-                  className={`text-xs font-black tracking-[0.2em] ${
+                  className={`pr-24 text-xs font-black tracking-[0.2em] ${
                     plan.popular
                       ? "text-black/50"
                       : "text-white/40"
@@ -195,10 +245,13 @@ function Membership() {
                   {plan.name}
                 </p>
 
-                {/* Price */}
+                {/* =================================================
+                    PRICE
+                ================================================== */}
+
                 <div className="mt-5 flex items-end gap-2">
 
-                  <span className="text-5xl font-black tracking-tight">
+                  <span className="text-4xl font-black tracking-tight sm:text-5xl">
                     {plan.price}
                   </span>
 
@@ -214,9 +267,12 @@ function Membership() {
 
                 </div>
 
-                {/* Description */}
+                {/* =================================================
+                    DESCRIPTION
+                ================================================== */}
+
                 <p
-                  className={`mt-5 min-h-[48px] text-sm leading-relaxed ${
+                  className={`mt-4 min-h-0 text-sm leading-relaxed sm:mt-5 sm:min-h-[48px] ${
                     plan.popular
                       ? "text-black/60"
                       : "text-white/45"
@@ -225,8 +281,11 @@ function Membership() {
                   {plan.description}
                 </p>
 
-                {/* Features */}
-                <ul className="mt-7 space-y-4">
+                {/* =================================================
+                    FEATURES
+                ================================================== */}
+
+                <ul className="mt-6 space-y-3 sm:mt-7 sm:space-y-4">
 
                   {plan.features.map((feature) => (
                     <li
@@ -258,10 +317,13 @@ function Membership() {
 
                 </ul>
 
-                {/* CTA */}
+                {/* =================================================
+                    CTA
+                ================================================== */}
+
                 <button
                   onClick={() => openModal(plan)}
-                  className={`group mt-9 flex w-full items-center justify-center gap-2 rounded-full py-3.5 text-sm font-black transition duration-300 ${
+                  className={`group mt-7 flex w-full items-center justify-center gap-2 rounded-full py-3.5 text-sm font-black transition duration-300 sm:mt-9 ${
                     plan.popular
                       ? "bg-black text-white hover:scale-[1.02]"
                       : "bg-white text-black hover:bg-[#b7ff3c]"
@@ -280,7 +342,10 @@ function Membership() {
 
           </div>
 
-          {/* Bottom Note */}
+          {/* =================================================
+              BOTTOM NOTE
+          ================================================== */}
+
           <motion.div
             initial={{
               opacity: 0,
@@ -294,9 +359,9 @@ function Membership() {
             transition={{
               delay: 0.3,
             }}
-            className="mt-8 text-center"
+            className="mt-7 px-2 text-center sm:mt-8"
           >
-            <p className="text-xs text-white/30">
+            <p className="text-xs leading-relaxed text-white/30">
               All memberships include access to our modern
               training environment and fitness community.
             </p>
@@ -321,7 +386,7 @@ function Membership() {
             exit={{
               opacity: 0,
             }}
-            className="fixed inset-0 z-[200] flex items-center justify-center overflow-y-auto bg-black/80 px-4 py-8 backdrop-blur-md"
+            className="fixed inset-0 z-[200] flex items-start justify-center overflow-y-auto bg-black/80 px-3 py-4 backdrop-blur-md sm:items-center sm:px-4 sm:py-8"
             onMouseDown={(e) => {
               if (e.target === e.currentTarget) {
                 closeModal();
@@ -329,7 +394,10 @@ function Membership() {
             }}
           >
 
-            {/* Modal */}
+            {/* =================================================
+                MODAL
+            ================================================== */}
+
             <motion.div
               initial={{
                 opacity: 0,
@@ -349,29 +417,40 @@ function Membership() {
               transition={{
                 duration: 0.3,
               }}
-              className="relative w-full max-w-lg overflow-hidden rounded-[2rem] border border-white/10 bg-[#111] shadow-2xl"
+              className="relative my-auto max-h-[calc(100vh-2rem)] w-full max-w-lg overflow-y-auto rounded-[1.5rem] border border-white/10 bg-[#111] shadow-2xl sm:max-h-[90vh] sm:rounded-[2rem]"
             >
 
-              {/* Close */}
+              {/* =================================================
+                  CLOSE BUTTON
+              ================================================== */}
+
               <button
                 onClick={closeModal}
-                className="absolute right-5 top-5 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/50 transition hover:bg-white/10 hover:text-white"
+                className="absolute right-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/50 transition hover:bg-white/10 hover:text-white sm:right-5 sm:top-5"
                 aria-label="Close membership modal"
               >
                 <X size={18} />
               </button>
 
+              {/* =================================================
+                  FORM STATE
+              ================================================== */}
+
               {!submitted ? (
                 <>
-                  {/* Modal Header */}
-                  <div className="border-b border-white/10 p-7 sm:p-8">
+                  {/* =================================================
+                      MODAL HEADER
+                  ================================================== */}
+
+                  <div className="border-b border-white/10 p-5 sm:p-8">
 
                     <p className="text-xs font-black tracking-[0.25em] text-[#b7ff3c]">
                       MEMBERSHIP REQUEST
                     </p>
 
-                    <h3 className="mt-3 pr-10 text-3xl font-black">
+                    <h3 className="mt-3 pr-10 text-2xl font-black sm:text-3xl">
                       JOIN{" "}
+
                       <span className="text-[#b7ff3c]">
                         {selectedPlan.name}
                       </span>
@@ -384,13 +463,19 @@ function Membership() {
 
                   </div>
 
-                  {/* Form */}
+                  {/* =================================================
+                      FORM
+                  ================================================== */}
+
                   <form
                     onSubmit={handleSubmit}
-                    className="p-7 sm:p-8"
+                    className="p-5 sm:p-8"
                   >
 
-                    {/* Name */}
+                    {/* =================================================
+                        NAME
+                    ================================================== */}
+
                     <div>
 
                       <label
@@ -415,14 +500,18 @@ function Membership() {
                           onChange={handleChange}
                           placeholder="Enter your name"
                           required
-                          className="w-full rounded-xl border border-white/10 bg-white/[0.04] py-3.5 pl-11 pr-4 text-sm text-white outline-none transition placeholder:text-white/25 focus:border-[#b7ff3c]/50 focus:bg-white/[0.06]"
+                          autoComplete="name"
+                          className="w-full rounded-xl border border-white/10 bg-white/[0.04] py-4 pl-11 pr-4 text-sm text-white outline-none transition placeholder:text-white/25 focus:border-[#b7ff3c]/50 focus:bg-white/[0.06]"
                         />
 
                       </div>
 
                     </div>
 
-                    {/* Phone */}
+                    {/* =================================================
+                        PHONE
+                    ================================================== */}
+
                     <div className="mt-5">
 
                       <label
@@ -449,14 +538,19 @@ function Membership() {
                           required
                           pattern="[0-9]{10}"
                           maxLength={10}
-                          className="w-full rounded-xl border border-white/10 bg-white/[0.04] py-3.5 pl-11 pr-4 text-sm text-white outline-none transition placeholder:text-white/25 focus:border-[#b7ff3c]/50 focus:bg-white/[0.06]"
+                          inputMode="numeric"
+                          autoComplete="tel"
+                          className="w-full rounded-xl border border-white/10 bg-white/[0.04] py-4 pl-11 pr-4 text-sm text-white outline-none transition placeholder:text-white/25 focus:border-[#b7ff3c]/50 focus:bg-white/[0.06]"
                         />
 
                       </div>
 
                     </div>
 
-                    {/* Email */}
+                    {/* =================================================
+                        EMAIL
+                    ================================================== */}
+
                     <div className="mt-5">
 
                       <label
@@ -481,28 +575,33 @@ function Membership() {
                           onChange={handleChange}
                           placeholder="Enter your email"
                           required
-                          className="w-full rounded-xl border border-white/10 bg-white/[0.04] py-3.5 pl-11 pr-4 text-sm text-white outline-none transition placeholder:text-white/25 focus:border-[#b7ff3c]/50 focus:bg-white/[0.06]"
+                          autoComplete="email"
+                          className="w-full rounded-xl border border-white/10 bg-white/[0.04] py-4 pl-11 pr-4 text-sm text-white outline-none transition placeholder:text-white/25 focus:border-[#b7ff3c]/50 focus:bg-white/[0.06]"
                         />
 
                       </div>
 
                     </div>
 
-                    {/* Selected Plan */}
+                    {/* =================================================
+                        SELECTED PLAN
+                    ================================================== */}
+
                     <div className="mt-6 rounded-xl border border-[#b7ff3c]/20 bg-[#b7ff3c]/5 p-4">
 
                       <p className="text-[10px] font-black tracking-widest text-white/30">
                         SELECTED MEMBERSHIP
                       </p>
 
-                      <div className="mt-2 flex items-center justify-between">
+                      <div className="mt-2 flex items-center justify-between gap-3">
 
                         <span className="font-bold">
                           {selectedPlan.name}
                         </span>
 
-                        <span className="font-black text-[#b7ff3c]">
+                        <span className="shrink-0 font-black text-[#b7ff3c]">
                           {selectedPlan.price}
+
                           <span className="ml-1 text-xs font-normal text-white/30">
                             /month
                           </span>
@@ -512,7 +611,10 @@ function Membership() {
 
                     </div>
 
-                    {/* Submit */}
+                    {/* =================================================
+                        SUBMIT BUTTON
+                    ================================================== */}
+
                     <button
                       type="submit"
                       className="group mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-[#b7ff3c] py-4 text-sm font-black text-black transition hover:scale-[1.01]"
@@ -525,6 +627,8 @@ function Membership() {
                       />
                     </button>
 
+                    {/* Demo Note */}
+
                     <p className="mt-4 text-center text-[11px] leading-relaxed text-white/25">
                       This is a demo enquiry form. No payment
                       is required at this stage.
@@ -533,6 +637,7 @@ function Membership() {
                   </form>
                 </>
               ) : (
+
                 /* =================================================
                    SUCCESS STATE
                 ================================================== */
@@ -546,8 +651,10 @@ function Membership() {
                     opacity: 1,
                     scale: 1,
                   }}
-                  className="px-7 py-14 text-center sm:px-10"
+                  className="px-5 py-12 text-center sm:px-10 sm:py-14"
                 >
+
+                  {/* Success Icon */}
 
                   <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-[#b7ff3c]/10">
 
@@ -558,28 +665,50 @@ function Membership() {
 
                   </div>
 
-                  <h3 className="mt-7 text-3xl font-black">
+                  {/* Heading */}
+
+                  <h3 className="mt-7 text-2xl font-black sm:text-3xl">
                     REQUEST RECEIVED
                   </h3>
 
+                  {/* Message */}
+
                   <p className="mx-auto mt-4 max-w-sm text-sm leading-relaxed text-white/45">
+
                     Thanks,{" "}
+
                     <span className="font-bold text-white">
                       {formData.name}
                     </span>
-                    . Your{" "}
+                    .
+
+                    {" "}Your{" "}
+
                     <span className="font-bold text-[#b7ff3c]">
                       {selectedPlan.name}
-                    </span>{" "}
-                    membership request has been recorded.
+                    </span>
+
+                    {" "}membership request has been recorded.
+
                   </p>
 
-                  <p className="mt-4 text-xs text-white/30">
+                  {/* Phone */}
+
+                  <p className="mt-4 text-xs leading-relaxed text-white/30">
+
                     Our team will contact you shortly at{" "}
-                    {formData.phone}.
+
+                    <span className="text-white/50">
+                      {formData.phone}
+                    </span>
+                    .
+
                   </p>
 
-                  {/* WhatsApp Follow-up */}
+                  {/* =================================================
+                      WHATSAPP FOLLOW-UP
+                  ================================================== */}
+
                   <a
                     href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
                       `Hello Evergrow Technologies, I just submitted a ${selectedPlan.name} membership request for IronForge Gym. My name is ${formData.name}.`
@@ -588,11 +717,17 @@ function Membership() {
                     rel="noreferrer"
                     className="mt-7 flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] py-3.5 text-sm font-black text-white transition hover:scale-[1.01]"
                   >
-                    <span>Continue on WhatsApp</span>
+                    <span>
+                      Continue on WhatsApp
+                    </span>
+
                     <ArrowUpRight size={17} />
                   </a>
 
-                  {/* Close */}
+                  {/* =================================================
+                      CLOSE
+                  ================================================== */}
+
                   <button
                     onClick={closeModal}
                     className="mt-3 w-full rounded-full border border-white/10 py-3.5 text-sm font-bold text-white/50 transition hover:bg-white/5 hover:text-white"
@@ -607,11 +742,7 @@ function Membership() {
 
           </motion.div>
         )}
-
-        
       </AnimatePresence>
-
-
     </>
   );
 }

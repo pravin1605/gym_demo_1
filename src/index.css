@@ -1,4 +1,4 @@
-@import "tailwindcss";
+/* @import "tailwindcss";
 
 html {
   scroll-behavior: smooth;
@@ -18,4 +18,94 @@ body {
 ::selection {
   background: #b7ff3c;
   color: black;
+} */
+
+
+
+@import "tailwindcss";
+
+/* =====================================================
+   GLOBAL RESET
+===================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #090909;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Prevent horizontal overflow on mobile */
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* =====================================================
+   TEXT SELECTION
+===================================================== */
+
+::selection {
+  background: #b7ff3c;
+  color: black;
+}
+
+/* =====================================================
+   IMAGES
+===================================================== */
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* =====================================================
+   BUTTONS / LINKS
+===================================================== */
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Better mobile touch behavior */
+
+button {
+  touch-action: manipulation;
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 640px) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-size: 14px;
+  }
+}
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 480px) {
+  body {
+    min-width: 320px;
+  }
 }
